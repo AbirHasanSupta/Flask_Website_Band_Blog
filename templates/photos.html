@@ -1,0 +1,38 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/contact-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Photos</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+    {% if current_user.id == 1:%}
+    <div class="d-flex justify-content-center my-4">
+        {{render_form(form, novalidate=True, button_map={"submit": "primary"})}}
+
+    {% endif %}
+    <div class="col-md-10 col-lg-8 col-xl-7 my-4">
+
+      <!-- Post preview-->
+      {% for link in drive_links %}
+      <div class="post-preview my-4">
+        <img src="{{ link }}" alt="self portrait photos" width="600"  align="center">
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% include "footer.html" %}
